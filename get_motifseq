@@ -8,7 +8,7 @@ from keras.models import load_model
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 def get_TPMOBZ():
-    x=np.load('D:\\Data\\2W\\7dimallx.npy')
+    x=np.load('D:\\Data\\2W\\allxnew.npy')
     y = np.load('D:\\Data\\2W\\alllabel.npy')
     x_P=B73_x[B73_y[:,1]>0] #####分别获得正样本
     return x_P
@@ -24,9 +24,9 @@ def get_maxrelu(test_x):
     return reluvalue_position,maxrelu
 def get_featureseq(reluposition,convlayer):
     y = np.load('D:\\Data\\2W\\alllabel.npy') ###标签存储文件的路径
-    x='D:\\Data\\2W\\7dimallx.npy'  #####存储序列文件的路径
+    x=np.load(D:\\Data\\2W\\allxnew.npy')  #####存储序列文件的路径
     
-    seq=B73data[B73_y[:,1]>0]  #####获得正样本的序列
+    seq=x[y[:,1]>0]  #####获得正样本的序列
     motif=np.arange(18).reshape(1,18)
    
     for i in range(len(seq)):
@@ -36,24 +36,11 @@ def get_featureseq(reluposition,convlayer):
            for a in seqnew:
                if all(a!='D') and all(a!='I'):
                   motif=np.append(motif,seqnew,axis=0)
-    B73=np.delete(B73,0,axis=0)
-    M17=np.delete(M17,0,axis=0)
-    return B73,M17
-# B73,Mo17=get_TPMOBZ()
-# B73_reluposition,B73_relu=get_maxrelu(B73)
-# Mo17_reluposition,Mo17_relu=get_maxrelu(Mo17)
-# np.save('D:\\Data\\2W\\B73relu_position.npy',B73_reluposition)
-# np.save('D:\\Data\\2W\\Mo17relu_position.npy',Mo17_reluposition)
-data1=np.load('D:\\Data\\dataseq1.npy')
-data2=np.load('D:\\Data\\dataseq2.npy')
-B73_reluposition=np.load('D:\\Data\\2W\\B73relu_position.npy')
-Mo17_reluposition=np.load('D:\\Data\\2W\\Mo17relu_position.npy')
-B73seq18,Mo17seq18=get_featureseq(data1,B73_reluposition,data2,Mo17_reluposition,0) ###获取Mo17和B73的特征序列
-np.save('D:\\Data\\2W\\B73featureseq18.npy',B73seq18)
-np.save('D:\\Data\\2W\\Mo17featurseq18.npy',Mo17seq18)
-#####################写入txt
-B73=np.load('D:\\Data\\2W\\B73featureseq18.npy')
-Mo17=np.load('D:\\Data\\2W\\Mo17featurseq18.npy')
-np.savetxt("D:\\Data\\2W\\B73featureseq18.txt",B73,fmt='%s',delimiter=',')
-np.savetxt("D:\\Data\\2W\\Mo17featureseq18.txt",Mo17,fmt='%s',delimiter=',')
-#####################绘制剪切位点与特征序列位置关系图##################################################################################
+    seq=np.delete(seq,0,axis=0)
+    return seq
+x=get_TPMOBZ()
+reluposition,relu=get_maxrelu(x)
+seq18=get_featureseq(reluposition,0) ###获取Mo17和B73的特征序列
+
+np.savetxt("D:\\Data\\2W\\motif18.txt",seq,fmt='%s',delimiter=',')
+
