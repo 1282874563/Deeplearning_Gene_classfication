@@ -29,5 +29,5 @@ Then change the filepath in preprocess.py and run this file.It will be used to c
  Input the H5 model file's layer name and data file(.npy), It will creat a text file that stores the MOTIF
 # Exsample file
 We uploaded the exsample file（Annotation exsample.txt and data exsample.txt） to help you better prepare the raw data file and raw Annotation file  to use our code.
-Especially we upload exsample data file(.npy) and label file(.npy) which can be used to train.
+Especially we upload exsample data file(.npy) and label file(.npy) which can be used to train,you can download exsample.rar.
 
