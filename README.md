@@ -24,5 +24,8 @@ This model uses the Keras framework. You need to run the code in the following e
 Following the format of the sample file, the preprocess.py will be used to convert the text file into the required data file
 # Train
 The train.py trains the data, each of which has a size of 1000 x 7
-#get Motif
+# get Motif
 The train.py will keep a trained one. The H5 model file, using this file as well as the data, yields a text file that stores the MOTIF
+# Exsample file
+We uploaded the exsample file（Annotation exsample.txt and data exsample.txt） to help you better prepare the raw data file and raw Annotation file  to use our code.
+
