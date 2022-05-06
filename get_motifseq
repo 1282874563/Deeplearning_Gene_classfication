@@ -14,7 +14,7 @@ def get_TPMOBZ():
     return x_P
 
 def get_maxrelu(test_x):
-    cnnmodel = keras.models.load_model('D:\\Data\\2W\\7dimmodelATT_TCNnew.h5')
+    cnnmodel = keras.models.load_model('D:\\Data\\2W\\7dimmodelATT_TCNnew.h5') #### Load the model file
     cnnmodel.summary()
     desiredOutputs = cnnmodel.get_layer('conv1d_3').output  ####Gets the activation value for the third layer of the convolution layer (the position of the convolution layer can be changed as needed)
     newmodel = Model(cnnmodel.inputs, desiredOutputs)
@@ -40,7 +40,7 @@ def get_featureseq(reluposition,convlayer):
     return seq
 x=get_TPMOBZ()
 reluposition,relu=get_maxrelu(x)
-seq18=get_featureseq(reluposition,0) ###获取Mo17和B73的特征序列
+seq18=get_featureseq(reluposition,0) ###Get the characteristic sequences of MO17 and B73
 
 np.savetxt("D:\\Data\\2W\\motif18.txt",seq,fmt='%s',delimiter=',')
 
