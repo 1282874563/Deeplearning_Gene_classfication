@@ -21,11 +21,13 @@ This model uses the Keras framework. You need to run the code in the following e
 
 *numpy 1.19.0
 # Preprocess
-Following the format of the sample file, the preprocess.py will be used to convert the text file into the required data file
+   By using this model, First Following the format of the exsample file to prepare your own raw data and annotation file,
+Then change the filepath in preprocess.py and run this file.It will be used to convert the text file into the required data file（.npy file）
 # Train
-The train.py trains the data, each of which has a size of 1000 x 7
+ change the (.npy file)filepath in train.py. Then run train.py to train the data, each of which has a size of 1000 x 7. It will creat amodel file(.h5) 
 # get Motif
-The train.py will keep a trained one. The H5 model file, using this file as well as the data, yields a text file that stores the MOTIF
+ Input the H5 model file's layer name and data file(.npy), It will creat a text file that stores the MOTIF
 # Exsample file
 We uploaded the exsample file（Annotation exsample.txt and data exsample.txt） to help you better prepare the raw data file and raw Annotation file  to use our code.
+Especially we upload exsample data file(.npy) and label file(.npy) which can be used to train.
 
